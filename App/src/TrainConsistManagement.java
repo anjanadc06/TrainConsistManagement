@@ -1,64 +1,40 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-class Coach {
-    String id;
-    String type;
+public class TrainConsistManagementApp {
 
-    public Coach(String id, String type) {
-        this.id = id;
-        this.type = type;
-    }
-}
-
-class TrainConsist {
-    private LinkedList<Coach> coaches;
-
-    public TrainConsist() {
-        coaches = new LinkedList<>();
-    }
-
-    public void addFront(Coach c) {
-        coaches.addFirst(c);
-    }
-
-    public void addEnd(Coach c) {
-        coaches.addLast(c);
-    }
-
-    public void insertAt(int index, Coach c) {
-        if (index >= 0 && index <= coaches.size()) {
-            coaches.add(index, c);
-        }
-    }
-
-    public void removeById(String id) {
-        coaches.removeIf(c -> c.id.equals(id));
-    }
-
-    public void display() {
-        for (Coach c : coaches) {
-            System.out.println(c.id + " " + c.type);
-        }
-    }
-}
-
-public class TrainConsistManagement {
     public static void main(String[] args) {
+        System.out.println("======================================");
+        System.out.println("=== Train Consist Management App ===");
+        System.out.println("======================================");
+        List<String> trainConsist = new ArrayList<>();
+        System.out.println("\nTrain initialized successfully...");
+        System.out.println("Initial Bogie Count: " + trainConsist.size());
+        System.out.println("Current Train Consist: " + trainConsist);
+        System.out.println("\nSystem ready for operations...");
+        System.out.println(" UC2 - Add Passenger Bogies to Train ");
+        System.out.println("======================================\n");
+        List<String> passengerBogies = new ArrayList<>();
 
-        TrainConsist train = new TrainConsist();
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
 
-        train.addEnd(new Coach("C1", "Engine"));
-        train.addEnd(new Coach("C2", "Sleeper"));
-        train.addEnd(new Coach("C3", "AC"));
 
-        train.addFront(new Coach("C0", "Guard"));
+        System.out.println("After Adding Bogies:");
+        System.out.println("Passenger Bogies : " + passengerBogies);
+        passengerBogies.remove("AC Chair");
 
-        train.insertAt(2, new Coach("C1.5", "General"));
+        System.out.println("\nAfter Removing 'AC Chair':");
+        System.out.println("Passenger Bogies : " + passengerBogies);
 
-        train.display();
+        boolean exists = passengerBogies.contains("Sleeper");
 
-        train.removeById("C2");
+        System.out.println("\nChecking if 'Sleeper' exists:");
+        System.out.println("Contains Sleeper? : " + exists);
 
-        train.display();
+        System.out.println("\nFinal Train Passenger Consist:");
+        System.out.println(passengerBogies);
+        System.out.println("\nUC2 operations completed successfully ...");
     }
 }
